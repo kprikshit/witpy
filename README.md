@@ -45,7 +45,25 @@ request = {
 Every action/function should return a dict. This dictionary is the context that will be 
 passed to the Wit application
 
+A typical example of a context returned to server is as following:
 
+``` python
+context = {
+	"doc":"Detect the type of action",
+	"lookups":["trait"],
+	"id":"action_type",
+	"values":[
+		{
+		"value":"booking",
+		"expressions":[
+			"I want to book at flight",
+         	"I need to buy a ticket",
+         	"need to book a cab"
+     		]
+     	}
+ 	]
+}
+```
 
 ### Logging
 
