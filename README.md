@@ -28,10 +28,6 @@ The Wit constructor takes the following parameters:
 * `access_token` - the access token of your Wit instance
 * `actions` -  the dictionary with your actions
 
-
-### Important
-I am not gonna lie or hide the fact that this is a fork of `https://github.com/wit-ai/pywit.git`. 
-However, this library is much better then the one provided. 
 ### Logging
 
 Default logging is to `STDOUT` with `INFO` level.
@@ -50,3 +46,6 @@ from wit import Wit
 client = Wit(access_token=access_token, actions=actions, logger=custom_logger)
 ```
 
+### Important
+I am not gonna lie or hide the fact that this is a fork of `https://github.com/wit-ai/pywit.git`. 
+However, this library is much better then the one provided. 
