@@ -16,7 +16,7 @@ INTERACTIVE_PROMPT = '> '
 WIT_RESPONSE_TYPES = ['error', 'msg', 'merge', 'stop', 'action']
 
 
-class WitsyError(Exception):
+class WitPyException(Exception):
     pass
 
 
@@ -45,12 +45,12 @@ def req(logger, access_token, method, path, params, **kwargs):
     )
     if rsp.status_code > 200:
         logger.error('Wit responded with status: ' + str(rsp.status_code) + ' (' + rsp.reason + ')')
-        raise WitsyError('Wit responded with status: ' + str(rsp.status_code) + ' (' + rsp.reason + ')')
+        raise WitPyException('Wit responded with status: ' + str(rsp.status_code) + ' (' + rsp.reason + ')')
 
     r_json = rsp.json()
     if 'error' in r_json:
         logger.error('Wit responded with an error: ' + r_json['error'])
-        raise WitsyError('Wit responded with an error: ' + r_json['error'])
+        raise WitPyException('Wit responded with an error: ' + r_json['error'])
 
     logger.debug('Request Response %s %s %s', method, full_url, r_json)
     logger.debug(r_json)
@@ -73,7 +73,7 @@ def validate_actions(logger, actions_dict):
     return actions_dict
 
 
-class WitAI:
+class WitPy:
 
     actions = {}
     access_token = None
@@ -128,7 +128,7 @@ class WitAI:
 
         if response_type == 'error':
             self.logger.error(response_json)
-            raise WitsyError('Wit returned an error. Nothing can be done')
+            raise WitPyException('Wit returned an error. Nothing can be done')
 
         if response_type == 'stop':
             return context
@@ -172,7 +172,7 @@ class WitAI:
         if not self.actions:
             self.throw_must_have_actions()
         if max_steps <= 0:
-            raise WitsyError('max iterations reached')
+            raise WitPyException('max iterations reached')
         if context is None:
             context = {}
 
@@ -188,7 +188,7 @@ class WitAI:
 
     def throw_if_action_missing(self, action_name):
         if action_name and action_name not in self.actions:
-            raise WitsyError('unknown action: ' + str(action_name))
+            raise WitPyError('unknown action: ' + str(action_name))
 
     def throw_must_have_actions(self):
-        raise WitsyError('You must provide the `actions` parameter to be able to use runActions. ')
+        raise WitPyError('You must provide the `actions` parameter to be able to use runActions. ')

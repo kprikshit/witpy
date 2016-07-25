@@ -34,9 +34,9 @@ Default logging is to `STDOUT` with `INFO` level.
 
 You can set your logging level as follows:
 ``` python
-from wit import Wit
+from witpy import WitPy
 import logging
-client = Wit(token, actions)
+client = WitPy(token, actions)
 client.logger.setLevel(logging.WARNING)
 ```
 
