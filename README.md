@@ -16,8 +16,8 @@ The API version for this library is `20160516`. Support for rest is on the way!
 
 # Overview
 `witpy` provides a WitPy class with the following methods:
-* `message` - the WitPy [message API](https://wit.ai/docs/http/20160330#get-intent-via-text-link)
-* `converse` - the low-level WitPy [converse API](https://wit.ai/docs/http/20160330#converse-link)
+* `message` - the Wit [message API](https://wit.ai/docs/http/20160330#get-intent-via-text-link)
+* `converse` - the low-level Wit [converse API](https://wit.ai/docs/http/20160330#converse-link)
 * `run_actions` - a higher-level method to the Wit converse API
 * `interactive` - starts an interactive conversation with your bot
 
