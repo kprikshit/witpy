@@ -55,6 +55,33 @@ You can set your logging level as follows:
 ``` python
 from witpy import WitPy
 import logging
+
+
+def custom_say(request):
+	print request.get('Message', 'No Message Returned')
+
+
+def custom_merge(request):
+	received_ctx = request.get('context', {})
+	received_ctx['some_entity'] = request.get('entities', {})
+											.get('some_entity', 0.0)
+	return received_ctx
+
+
+def get_all_challenge_type(request):
+	ctx = request.get('context', {})
+	challenge_types = ['mathematics', 'algorithms', 'machine-learning']
+	ctx['types'] =  challenge_types
+	return ctx
+
+
+token = '<your wit application token>'
+actions = {
+	'say': say,
+	'merge': custom_merge,
+	'get_all_challenge_types': get_all_challenge_types,
+}
+
 wc = WitPy(token, actions)
 wc.logger.setLevel(logging.WARNING)
 ```
