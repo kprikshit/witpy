@@ -23,10 +23,10 @@ class WitPyException(Exception):
 def req(logger, access_token, method, path, params, **kwargs):
     """
     Make request to Wit AI Servers
-    :param logger:
-    :param access_token:
-    :param method:
-    :param path:
+    :param logger: self explanatory
+    :param access_token: access_token for your wit application
+    :param method: GET or POST.
+    :param path: Relative Path of the API
     :param params:
     :param kwargs:
     :return:

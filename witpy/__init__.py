@@ -1,9 +1,8 @@
-from WitAI import WitAI
+from witpy import WitPy
 import sys
 import logging
 
-# Set default logging for the module. Client applications can use a custom
-# logging config to override defaults specified here
+# Default Logger for the module
 logging.getLogger(__name__).setLevel(logging.DEBUG)
 logging.getLogger(__name__).propagate = False
 formatter = logging.Formatter('%(message)s')

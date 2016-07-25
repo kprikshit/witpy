@@ -22,11 +22,30 @@ The API version for this library is `20160516`. Support for rest is on the way!
 * `interactive` - starts an interactive conversation with your bot
 
 
-### Wit class
+### WitPy class
 
 The Wit constructor takes the following parameters:
 * `access_token` - the access token of your Wit instance
 * `actions` -  the dictionary with your actions
+
+### WitPy Function
+
+Every function that you right will have only one argument named request.
+This is a dictionary and a general structure of a request object is as following:
+
+``` python
+request = {
+	'session_id': session_id,
+	'context': dict(context),
+	'text': message,
+	'entities': response_json.get('entities'),
+}
+```
+
+Every action/function should return a dict. This dictionary is the context that will be 
+passed to the Wit application
+
+
 
 ### Logging
 
@@ -48,4 +67,4 @@ wc = WitPy(access_token=access_token, actions=actions, logger=custom_logger)
 
 ### Important
 I am not gonna lie or hide the fact that this is a fork of `https://github.com/wit-ai/pywit.git`. 
-However, this library is much better then the one provided. 
+However, this library is better than the one provided in handling a lot of cases 
